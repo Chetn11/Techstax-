@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use('/api/workflows', workflowRoutes);
+app.use('/workflows', workflowRoutes);
 
 app.get("/",async (req,res)=>{
   res.send({message:"Workflow api is Working"})
