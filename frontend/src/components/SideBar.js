@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/styles.css"
+import "../styles/componentsStyles.css"
 function SideBar() {
     const onDragStart = (event, nodeType, content) => {
         event.dataTransfer.setData("application/reactflow", nodeType);

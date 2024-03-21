@@ -7,10 +7,8 @@ import ReactFlow, {
   Controls,
 } from "reactflow";
 import "reactflow/dist/style.css";
-
 import SideBar from "./SideBar";
-
-import "../styles/styles.css";
+import "../styles/componentsStyles.css";
 
 const initialNodes = [
   {
