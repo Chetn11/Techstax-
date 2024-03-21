@@ -31,7 +31,7 @@ function SideBar() {
         onDragStart={(event) => onDragStart(event, "node", "wait")}
         draggable
       >
-        Wait
+        Wait 60sec
       </div>
       <div
       style={{border:'1px solid grey'}}
@@ -39,7 +39,7 @@ function SideBar() {
         onDragStart={(event) => onDragStart(event, "node", "convert")}
         draggable
       >
-        Convert to JSON
+        Convert CSV to JSON
       </div>
       <div
       style={{border:'1px solid red'}}
@@ -47,7 +47,7 @@ function SideBar() {
         onDragStart={(event) => onDragStart(event, "node", "convert")}
         draggable
       >
-        POST Request
+        Post Request
       </div>
     </aside>
   )

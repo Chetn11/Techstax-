@@ -8,14 +8,14 @@ import ReactFlow, {
   ReactFlowProvider,
 } from "reactflow";
 import Sidebar from "./SideBar";
-import { isNodeConnected } from "../NodeConnection";
+import { isNodeConnected } from "./NodeConnection";
 import Node from "./CustomNodes";
 import "reactflow/dist/style.css";
 import "../styles/dnd.css";
 import axios from "axios";
 
 let id = 0;
-const getId = () => `dndnode_${id++}`;
+const getId = () => `${id++}`;
 
 const initialNodes = [];
 
