@@ -31,19 +31,20 @@ const initialEdges = [
 ];
 const TypeOfNode = { node: Node };
 const WorkFlow = () => {
-  const reactFlowWrapper = useRef(null);
+  const flowRef = useRef(null);
   const textRef = useRef(null);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [reactflow, setReactFlow] = useState(null);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [selectedNode, setSelectedNode] = useState(null);
-  const [isSelected, setIsSelected] = useState(false);
   const [jsonData, setJsonData] = useState(null);
   const [flag, setFlag] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+ 
 
   const [timer, setTimer] = useState(60);
 
-  const onInit = (reactFlowInstance) => setReactFlowInstance(reactFlowInstance);
+  const onInit = (reactflow) => setReactFlow(reactflow);
 
   const handleFileChange = (event) => {
     setInterval(() => {
@@ -85,15 +86,15 @@ const WorkFlow = () => {
 
   const onDrop = (event) => {
     event.preventDefault();
-    const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+    const reactFlowBounds = flowRef.current.getBoundingClientRect();
 
     console.log(event);
     const type = event.dataTransfer.getData("application/reactflow");
     console.log(type);
     const label = event.dataTransfer.getData("content");
     console.log(label);
-    console.log(reactFlowInstance, "reactIns");
-    const position = reactFlowInstance.project({
+    console.log(reactflow, "reactIns");
+    const position = reactflow.project({
       x: event.clientX - reactFlowBounds.left,
       y: event.clientY - reactFlowBounds.top,
     });
@@ -218,7 +219,7 @@ const WorkFlow = () => {
     <>
       <div className="DND">
         <ReactFlowProvider>
-          <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+          <div className="flow" ref={flowRef}>
             <ReactFlow
               nodes={nodes}
               edges={edges}

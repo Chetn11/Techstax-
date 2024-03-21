@@ -75,7 +75,7 @@ const DnDFlow = () => {
   return (
     <div className="DND">
       <ReactFlowProvider>
-        <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+        <div className="flow" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -85,7 +85,7 @@ const DnDFlow = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            fitView
+           
           >
             <Controls />
           </ReactFlow>

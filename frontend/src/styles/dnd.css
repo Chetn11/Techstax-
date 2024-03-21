@@ -21,7 +21,7 @@
     margin-bottom: 10px;
   }
   
-  .DND .reactflow-wrapper {
+  .DND .flow {
     flex-grow: 1;
     height: 100%;
   }
