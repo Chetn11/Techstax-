@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const Workflow = require('../models/Workflow.model');
+const {WorkflowModel} = require('../models/Workflow.model');
 
 
 
 router.get("/",async (req,res)=>{
     try {
-        const data=await Workflow.find();
+        const data=await WorkflowModel.find();
         res.status(200).json(data)
     } catch (error) {
         res.status(500).json({message:"server error"})
@@ -17,16 +17,15 @@ router.get("/",async (req,res)=>{
 
   
 
-// to save the workflow
+// to save the WorkflowModel
 router.post('/save', async (req, res) => {
     try {
-      const { node, connection } = req.body;
-      const workflow = new Workflow({ node, connection });
-      await workflow.save();
-      res.send({ message: 'Workflow Saved Successfully!..'});
+      const { node, edges } = req.body;
+      await WorkflowModel.create({node,edges});
+      res.send({ message: 'WorkflowModel Saved Successfully!..',body:node});
     } catch (error) {
       console.error('Error :', error);
-      res.send({ error: 'server error' });
+      res.send({ error: 'server error', body:req.body });
     }
   });
 
