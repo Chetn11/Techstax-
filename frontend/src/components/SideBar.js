@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../styles/styles.css"
 function SideBar() {
     const onDragStart = (event, nodeType, content) => {
         event.dataTransfer.setData("application/reactflow", nodeType);
@@ -8,9 +8,9 @@ function SideBar() {
       };
     
   return (
-    <aside>
+    <aside className='sideBar' style={{backgroundColor:"#333"}}>
         <div
-        style={{border:'1px solid blue'}}
+        style={{border:'none', backgroundColor:"blue", color:"white"}}
           className="DNDnode"
           onDragStart={(event) => onDragStart(event, "node", "csv")}
           draggable
@@ -18,7 +18,7 @@ function SideBar() {
           Upload CSV
         </div>
         <div
-        style={{border:'1px solid green'}}
+        style={{border:'none', backgroundColor:"purple", color:"white"}}
         className="DNDnode"
         onDragStart={(event) => onDragStart(event, "node", "filter")}
         draggable
@@ -26,15 +26,15 @@ function SideBar() {
           Filter
         </div>
         <div
-        style={{border:'1px solid green'}}
+        style={{border:'none', backgroundColor:"green", color:"white"}}
         className="DNDnode"
-        onDragStart={(event) => onDragStart(event, "node", "wait")}
+        onDragStart={(event) => onDragStart(event, "node", "delay")}
         draggable
       >
-        Wait 60sec
+        Delay
       </div>
       <div
-      style={{border:'1px solid grey'}}
+      style={{border:'none', backgroundColor:"red", color:"white"}}
         className="DNDnode"
         onDragStart={(event) => onDragStart(event, "node", "convert")}
         draggable
@@ -42,7 +42,7 @@ function SideBar() {
         Convert CSV to JSON
       </div>
       <div
-      style={{border:'1px solid red'}}
+      style={{border:'none', backgroundColor:"orange", color:"white"}}
         className="DNDnode"
         onDragStart={(event) => onDragStart(event, "node", "convert")}
         draggable

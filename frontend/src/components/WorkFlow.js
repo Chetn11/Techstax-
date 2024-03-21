@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
-import { MarkerType } from "reactflow";
+import { Controls, MarkerType } from "reactflow";
 import ReactFlow, {
   addEdge,
   Background,
@@ -117,12 +117,12 @@ const WorkFlow = () => {
       console.log(newNode);
       setNodes((e) => e.concat(newNode));
       setSelectedNode(newNode.id);
-    } else if (label === "wait") {
+    } else if (label === "delay") {
       const newNode = {
         id: getId(),
         type,
         position,
-        data: { heading: "Wait 60 sec", content: timer },
+        data: { heading: "Delay 60 sec", content: timer },
       };
 
       console.log(newNode);
@@ -210,10 +210,10 @@ const WorkFlow = () => {
         await axios.post("http://localhost:8080/workflows/save", payload);
         alert("Work is saved");
       } catch (error) {
-        alert("Cannot Save Flow");
+        alert("Cannot Save "+error);
       }
     } else {
-      alert("Cannot Save Flow");
+      alert("Cannot Save due to some error");
     }
   };
 
@@ -248,20 +248,26 @@ const WorkFlow = () => {
             </div>
           ) : (
             <>
+            <div>
+              <Sidebar />
               <button
                 style={{
                   width: "150px",
                   height: "30px",
                   borderRadius: "10px",
-                  marginTop:"50px",
+                  border:"none",
+                  marginLeft:"125px",
+                  marginTop:"30px",
+                  backgroundColor:"skyblue"
                 }}
                 onClick={Savework}
               >
                 Save Work
               </button>
-              <Sidebar />
+              </div>
             </>
           )}
+          <Controls />
         </ReactFlowProvider>
       </div>
     </>
